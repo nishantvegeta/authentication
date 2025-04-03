@@ -6,6 +6,7 @@ using auth.Provider.Interfaces;
 using auth.Manager;
 using auth.Manager.Interfaces;
 using auth.Services;
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +19,19 @@ builder.Services.AddDbContext<FirstRunDbContext>(builder =>
 builder.Services.AddScoped<IAuthManager, AuthManager>();
 builder.Services.AddScoped<ICurrentUserProvider, CurrentUserProvider>();
 builder.Services.AddScoped<IUserService, UserService>();
+// Register the authorization handler
+builder.Services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/auth/Login";
+    });
+
+builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("MinimumAge18", policy =>
+            policy.Requirements.Add(new MinimumAgeRequirement(18)));
     });
 
 

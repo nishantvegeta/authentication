@@ -25,14 +25,42 @@ namespace auth.Controllers
         {
             try
             {
-                var admin = new User()
+                var admin = new List<User>
                 {
-                    Email = "super.admin",
-                    Username = "Super admin",
-                    Role = "Admin",
+                    new User
+                    {
+                        Email = "super.admin",
+                        Username = "Super admin",
+                        Role = "Admin",
+                        Age = 20,
+                    },
+                    new User
+                    {
+                        Email = "user1@example.com",
+                        Username = "user 1",
+                        Role = "Normal",
+                        Age = 25,
+                    },
+                    new User
+                    {
+                        Email = "user2@example.com",
+                        Username = "user 2",
+                        Role = "Normal",
+                        Age = 8,
+                    },
+                    new User
+                    {
+                        Email = "user3@example.com",
+                        Username = "user3",
+                        Role = "Normal",
+                        Age = 30,
+                    }
                 };
 
-                await userService.CreateUser(admin , "admin");
+                foreach (var user in admin)
+                {
+                    await userService.CreateUser(user, "admin");
+                }
 
                 return RedirectToAction("Login", "Auth");
             }

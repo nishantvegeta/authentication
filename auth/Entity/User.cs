@@ -12,4 +12,5 @@ public class User
     public string Role { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public string UserType { get; set; } = UserTypeConstant.Admin;
+    public int Age { get; set; }
 }

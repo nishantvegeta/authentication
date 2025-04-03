@@ -1,9 +1,11 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using auth.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace auth.Controllers;
 
+[Authorize(Policy = "MinimumAge18")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
