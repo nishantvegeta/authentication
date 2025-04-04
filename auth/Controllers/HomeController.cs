@@ -30,4 +30,11 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    [AllowAnonymous]
+    public IActionResult AccessDenied()
+    {
+        ViewBag.ErrorMessage = "You do not have permission to access this resource.";
+        return View();
+    }
 }
