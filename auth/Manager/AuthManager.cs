@@ -41,6 +41,7 @@ public class AuthManager : IAuthManager
         {
             new ("Id", user.Id.ToString()),
             new ("Age", user.Age.ToString()),
+            new (ClaimTypes.Role, user.Role),
         };
         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
         await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 

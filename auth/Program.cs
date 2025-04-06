@@ -7,6 +7,8 @@ using auth.Manager;
 using auth.Manager.Interfaces;
 using auth.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 

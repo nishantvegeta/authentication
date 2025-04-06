@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using auth.Data;
-using auth.Provider.Interfaces;
-using auth.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using auth.Entity;
 using auth.Services;
-using auth.Constants;
 
 namespace auth.Controllers
 {
@@ -29,13 +26,6 @@ namespace auth.Controllers
                 {
                     new User
                     {
-                        Email = "super.admin",
-                        Username = "Super admin",
-                        Role = "Admin",
-                        Age = 20,
-                    },
-                    new User
-                    {
                         Email = "user1@example.com",
                         Username = "user 1",
                         Role = "Normal",
@@ -54,6 +44,20 @@ namespace auth.Controllers
                         Username = "user3",
                         Role = "Normal",
                         Age = 30,
+                    },
+                    new User
+                    {
+                        Email = "user4@example.com",
+                        Username = "user4",
+                        Role = "Admin",
+                        Age = 35,
+                    },
+                    new User
+                    {
+                        Email = "user5@example.com",
+                        Username = "user5",
+                        Role = "Host",
+                        Age = 40,
                     }
                 };
 

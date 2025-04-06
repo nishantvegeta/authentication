@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace auth.Controllers;
 
 [Authorize(Policy = "MinimumAge18")]
+[Authorize(Roles = "Host")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
